@@ -1,9 +1,9 @@
 ---
 title: tomas
-precio: 342342342342
-marca: Varlion
+precio: 32131313
+marca: Siux
 estado: nueva
-descripcion: dewefsdfsdf
+descripcion: wsfdfsfsefse
 imagen: /images/300x300-removebg-preview.png
 disponible: true
 ---
