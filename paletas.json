@@ -1,1 +1,13 @@
-[]
+[
+    {
+        "name": "tienda-padelbox",
+        "version": "1.0.0",
+        "scripts": {
+            "build": "node scripts/generate-json.js",
+            "dev": "node scripts/generate-json.js --watch"
+        },
+            "dependencies": {
+                "js-yaml": "^4.1.0"
+        }
+    }
+]
