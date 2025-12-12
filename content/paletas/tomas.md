@@ -1,9 +1,9 @@
 ---
-title: hola
-precio: 88378347
-marca: Hirostar
+title: tomas
+precio: 342342342342
+marca: Varlion
 estado: nueva
-descripcion: hola vomo rdtsd
+descripcion: dewefsdfsdf
 imagen: /images/300x300-removebg-preview.png
 disponible: true
 ---
