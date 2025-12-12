@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda PadelBox</title>
+    <title>Paletas Nuevas - Tienda PadelBox</title>
     <link rel="stylesheet" href="../CSS/paletasNuevas.css">
+    <!-- Si tienes un CSS general, agrega este también -->
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -69,26 +71,30 @@
         </nav>
     </header>
 
-
-    <!-- AGREGAR EL CODIGO DEPENDENDIENDO DE LA PAGINA QUE ESTEMOS TRABAJANDO -->
-
-    <h2>PALETAS NUEVAS</h2>
-
+    <!-- Sección de Paletas Nuevas -->
+    <section class="productos">
+        <h2>PALETAS NUEVAS</h2>
+        
+        <!-- Contenedor donde se cargarán las paletas -->
+        <div id="paletas-container" class="productos-grid">
+            <!-- Las paletas se cargarán aquí con JavaScript -->
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Bulipadel</h3>
+                    <h3>PadelBox</h3>
                     <p>Tu tienda de confianza para todo lo relacionado con el pádel. Ofrecemos productos de calidad y asesoramiento especializado.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Categorías</h3>
                     <ul>
-                        <li><a href="#">Paletas</a></li>
-                        <li><a href="#">Bolsos y Mochilas</a></li>
-                        <li><a href="#">Indumentaria</a></li>
+                        <li><a href="paletas.html">Paletas</a></li>
+                        <li><a href="#">Grips</a></li>
+                        <li><a href="#">Pelotas</a></li>
                         <li><a href="#">Calzado</a></li>
                         <li><a href="#">Accesorios</a></li>
                     </ul>
@@ -96,30 +102,139 @@
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
-                        <li>Email: info@bulipadel.com</li>
+                        <li>Email: info@padelbox.com</li>
                         <li>Teléfono: +54 11 1234-5678</li>
                         <li>Dirección: Av. Pádel 123, Buenos Aires</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2023 Bulipadel - Todos los derechos reservados
+                &copy; 2024 PadelBox - Todos los derechos reservados
             </div>
         </div>
     </footer>
 
-    <!-- Similar al anterior, pero filtra por estado "usada" -->
+    <!-- JavaScript para cargar paletas -->
     <script>
+        // Función para cargar paletas NUEVAS
         async function cargarPaletasNuevas() {
-            const response = await fetch('/paletas.json');
-            const paletas = await response.json();
-            
-            // FILTRAR solo paletas con estado "usada"
-            const paletasNuevas = paletas.filter(p => p.estado === "nuevas" && p.disponible !== false);
-            
-            mostrarPaletas(paletasNuevas, 'paletas-nuevas-container');
+            try {
+                console.log('🔍 Cargando paletas nuevas...');
+                
+                // IMPORTANTE: Verifica la ruta correcta
+                const response = await fetch('/paletas.json');
+                
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+                
+                const paletas = await response.json();
+                console.log('📊 Paletas cargadas:', paletas);
+                
+                // FILTRAR solo paletas con estado "nueva" (singular, no "nuevas")
+                const paletasNuevas = paletas.filter(p => 
+                    p.estado === "nueva" && (p.disponible === undefined || p.disponible === true)
+                );
+                
+                console.log('✅ Paletas nuevas filtradas:', paletasNuevas);
+                
+                mostrarPaletas(paletasNuevas);
+                
+            } catch (error) {
+                console.error('❌ Error cargando paletas:', error);
+                mostrarError();
+            }
         }
+        
+        // Función para mostrar paletas en la página
+        function mostrarPaletas(paletas) {
+            const container = document.getElementById('paletas-container');
+            
+            if (!container) {
+                console.error('❌ No se encontró el contenedor paletas-container');
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            if (!paletas || paletas.length === 0) {
+                container.innerHTML = `
+                    <div class="no-productos">
+                        <p>🏸 No hay paletas nuevas disponibles en este momento.</p>
+                        <p>Próximamente agregaremos más productos.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Crear HTML para cada paleta
+            paletas.forEach(paleta => {
+                const badge = '<span class="badge nueva">NUEVA</span>';
+                
+                // Precio formateado
+                const precio = paleta.precio ? 
+                    `$${paleta.precio.toLocaleString('es-AR')}` : 
+                    'Consultar';
+                
+                // Imagen (usar placeholder si no hay)
+                const imagen = paleta.imagen || 'https://via.placeholder.com/300x200?text=Paleta+Padel';
+                
+                const html = `
+                    <div class="producto-card">
+                        ${badge}
+                        <img src="${imagen}" 
+                             alt="${paleta.title || 'Paleta de pádel'}"
+                             loading="lazy">
+                        <div class="producto-info">
+                            <h3>${paleta.title || 'Paleta sin nombre'}</h3>
+                            ${paleta.marca ? `<p class="marca">${paleta.marca}</p>` : ''}
+                            <p class="precio">${precio}</p>
+                            ${paleta.descripcion ? `<p class="descripcion">${paleta.descripcion}</p>` : ''}
+                            <button class="btn-comprar" onclick="consultarPaleta('${paleta.title || ''}', ${paleta.precio || 0})">
+                                Consultar
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+        
+        // Función para mostrar error
+        function mostrarError() {
+            const container = document.getElementById('paletas-container');
+            if (container) {
+                container.innerHTML = `
+                    <div class="no-productos">
+                        <p>⚠️ Error al cargar las paletas.</p>
+                        <p>Por favor, intenta recargar la página.</p>
+                        <button onclick="cargarPaletasNuevas()" style="padding: 10px 20px; margin-top: 10px;">
+                            Reintentar
+                        </button>
+                    </div>
+                `;
+            }
+        }
+        
+        // Función para consultar una paleta
+        function consultarPaleta(nombre, precio) {
+            const precioFormateado = precio ? `$${precio.toLocaleString('es-AR')}` : 'Consultar';
+            
+            const mensaje = `
+                🎾 CONSULTA ENVIADA
+                ------------------
+                Producto: ${nombre}
+                Precio: ${precioFormateado}
+                Estado: Nueva
+                
+                📞 Te contactaremos pronto para brindarte más información.
+            `;
+            
+            alert(mensaje);
+        }
+        
+        // Cargar paletas cuando la página esté lista
+        document.addEventListener('DOMContentLoaded', cargarPaletasNuevas);
     </script>
-
 </body>
 </html>
