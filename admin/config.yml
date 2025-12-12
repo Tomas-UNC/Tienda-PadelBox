@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  # Colección para PALETAS
+  - name: "paletas"
+    label: "Paletas"
+    folder: "content/paletas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Precio", name: "precio", widget: "number" }
+      - { label: "Marca", name: "marca", widget: "select", 
+          options: ["Nox", "Varlion", "Head", "Oxdog", "Siux", "Hirostar", "Adidas", "Bullpadel", "Otro"] }
+      
+      # ESTE CAMPO ES CLAVE: define si es nueva o usada
+      - { label: "Estado", name: "estado", widget: "select", 
+          options: ["nueva", "usada", "encargo"] }
+      
+      - { label: "Descripción", name: "descripcion", widget: "text" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+      - { label: "Disponible", name: "disponible", widget: "boolean", default: true }
+  
+  # Colección para BOLSOS (si también los vendes)
+  - name: "bolsos"
+    label: "Bolsos y Mochilas"
+    folder: "content/bolsos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Precio", name: "precio", widget: "number" }
+      - { label: "Descripción", name: "descripcion", widget: "text" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+      - { label: "Disponible", name: "disponible", widget: "boolean", default: true }

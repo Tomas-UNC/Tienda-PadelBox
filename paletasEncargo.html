@@ -107,5 +107,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Similar al anterior, pero filtra por estado "usada" -->
+    <script>
+        async function cargarPaletasEncargo() {
+            const response = await fetch('/paletas.json');
+            const paletas = await response.json();
+            
+            // FILTRAR solo paletas con estado "usada"
+            const paletasEncargo = paletas.filter(p => p.estado === "encargo" && p.disponible !== false);
+            
+            mostrarPaletas(paletasEncargo, 'paletas-encargo-container');
+        }
+    </script>
+
 </body>
 </html>
