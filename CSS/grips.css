@@ -155,44 +155,8 @@ header {
 .btn:hover {
     background-color: #c0392b;
 }
-        
-/* Sección de marcas */
-.brands {
-    padding: 60px 0;
-    text-align: center;
-}
-        
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 32px;
-    color: #ffffff;
-}
-        
-.brands-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-        
-.brand-card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-        
-.brand-card:hover {
-    transform: translateY(-5px);
-}
-        
-.brand-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2c3e50;
-}
+
+/* Diseño de lo que sea que se agregue a la pestaña que se este haciendo */
 
 /* Footer */
 footer {

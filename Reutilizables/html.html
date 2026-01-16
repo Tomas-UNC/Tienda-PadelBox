@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda PadelBox</title>
-    <link rel="stylesheet" href="../CSS/paletasUsadas.css">
+    <link rel="stylesheet" href="../CSS/index.css">
 </head>
 <body>
     <!-- Header -->
@@ -35,7 +35,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">GRIPS</a>
+                        <a href="grips.html" class="nav-link">GRIPS</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">TUBO DE PELOTAS</a>
@@ -51,11 +51,47 @@
         </nav>
     </header>
 
+    <!-- A partir de aca agregamos todo lo que tenga que ver con la pestaña que estemos trabajando -->
 
-    <!-- AGREGAR EL CODIGO DEPENDENDIENDO DE LA PAGINA QUE ESTEMOS TRABAJANDO -->
+    ...
+    ...
+    ...
 
-    <h2>PALETAS USADAS</h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Todo lo que necesitas para jugar al pádel</h1>
+            <p>Encuentra las mejores paletas, indumentaria y accesorios de las principales marcas del mercado</p>
+            <a href="#" class="btn">Ver productos destacados</a>
+        </div>
+    </section>
 
+    <!-- Sección de Marcas -->
+    <section class="brands">
+        <div class="container">
+            <h2 class="section-title">Nuestras Marcas</h2>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <div class="brand-logo">Nox</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">Varlion</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">Head</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">Oxdog</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">Siux</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">Hirostar</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -90,19 +126,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Similar al anterior, pero filtra por estado "usada" -->
-    <script>
-        async function cargarPaletasUsadas() {
-            const response = await fetch('/paletas.json');
-            const paletas = await response.json();
-            
-            // FILTRAR solo paletas con estado "usada"
-            const paletasUsadas = paletas.filter(p => p.estado === "usada" && p.disponible !== false);
-            
-            mostrarPaletas(paletasUsadas, 'paletas-usadas-container');
-        }
-    </script>
-
 </body>
 </html>

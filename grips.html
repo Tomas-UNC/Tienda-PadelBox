@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda PadelBox</title>
-    <link rel="stylesheet" href="../CSS/paletasUsadas.css">
+    <link rel="stylesheet" href="../CSS/grips.css">
 </head>
 <body>
     <!-- Header -->
@@ -54,8 +54,7 @@
 
     <!-- AGREGAR EL CODIGO DEPENDENDIENDO DE LA PAGINA QUE ESTEMOS TRABAJANDO -->
 
-    <h2>PALETAS USADAS</h2>
-
+    <h2>Grips</h2>
 
     <!-- Footer -->
     <footer>
@@ -90,19 +89,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Similar al anterior, pero filtra por estado "usada" -->
-    <script>
-        async function cargarPaletasUsadas() {
-            const response = await fetch('/paletas.json');
-            const paletas = await response.json();
-            
-            // FILTRAR solo paletas con estado "usada"
-            const paletasUsadas = paletas.filter(p => p.estado === "usada" && p.disponible !== false);
-            
-            mostrarPaletas(paletasUsadas, 'paletas-usadas-container');
-        }
-    </script>
-
+    
 </body>
 </html>
