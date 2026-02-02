@@ -7,9 +7,11 @@
 }
         
 body {
-    background-color: #f8f9fa;
-    color: #333;
-    line-height: 1.6;
+    background-image: url('../imagenes/fondo-pagina.webp');
+    background-repeat: no-repeat;
+    background-size: cover; /* O usa: contain, 100% 100%, etc. */
+    background-position: center center;
+    background-attachment: fixed; /* Fijo o scroll */ 
 }
         
 a {
@@ -25,15 +27,15 @@ a {
         
 /* Header */
 header {
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #252424;
+    box-shadow: 0 2px 10px rgb(0, 0, 0);
     position: sticky;
     top: 0;
     z-index: 100;
 }
         
 .top-bar {
-    background-color: #2c3e50;
+    background-color: #000000;
     color: white;
     padding: 8px 0;
     font-size: 14px;
@@ -53,7 +55,7 @@ header {
 .logo {
     font-size: 28px;
     font-weight: bold;
-    color: #2c3e50;
+    color: #ffffff;
 }
         
 .logo span {
@@ -62,7 +64,7 @@ header {
         
 /* Navegación principal */
 .main-nav {
-    background-color: #2c3e50;
+    background-color: #252424;
 }
         
 .nav-menu {
@@ -83,7 +85,7 @@ header {
 }
         
 .nav-link:hover {
-    background-color: #34495e;
+    background-color: #e74c3c;
 }
         
 /* Menús desplegables */
@@ -119,16 +121,46 @@ header {
     background-color: #f8f9fa;
     color: #e74c3c;
 }
+        
+/* Hero Section */
+.hero {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+        
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+        
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+        
+.btn {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+        
+.btn:hover {
+    background-color: #c0392b;
+}
 
-/*-------------------------------------------------------------------------------------------------------------------------*/
-
-/* AGREGAR EL ESTILO DEPENDE LA PAGINA QUE QUIERAMOS EDITAR */
-
-/*-------------------------------------------------------------------------------------------------------------------------*/
+/* Diseño de lo que sea que se agregue a la pestaña que se este haciendo */
 
 /* Footer */
 footer {
-    background-color: #2c3e50;
+    background-color: #252424;
     color: white;
     padding: 40px 0 20px;
 }
