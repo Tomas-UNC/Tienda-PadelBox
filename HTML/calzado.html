@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda PadelBox</title>
-    <link rel="stylesheet" href="../CSS/grips.css">
+    <link rel="stylesheet" href="../CSS/paletas.css">
 </head>
 <body>
     <!-- Header -->
@@ -35,16 +35,16 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">GRIPS</a>
+                        <a href="grips.html" class="nav-link">GRIPS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">TUBO DE PELOTAS</a>
+                        <a href="tubospelotas.html" class="nav-link">TUBO DE PELOTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">CALZADO</a>
+                        <a href="calzado.html" class="nav-link">CALZADO</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">ACCESORIOS</a>
+                        <a href="accesorios.html" class="nav-link">ACCESORIOS</a>
                     </li>
                 </ul>
             </div>
@@ -54,7 +54,26 @@
 
     <!-- AGREGAR EL CODIGO DEPENDENDIENDO DE LA PAGINA QUE ESTEMOS TRABAJANDO -->
 
-    <h2>Grips</h2>
+    <h2>Calzado</h2>
+
+    <!-- Muestra todas las paletas, puedes agregar filtros -->
+    <div class="filtros">
+        <button onclick="filtrarPorEstado('todos')">Todas</button>
+        <button onclick="filtrarPorEstado('nueva')">Nuevas</button>
+        <button onclick="filtrarPorEstado('usada')">Usadas</button>
+        <button onclick="filtrarPorEstado('encargo')">Encargo</button>
+    </div>
+    
+    <!-- Tipo de paletas -->
+    <section class="brands">
+        <div class="container">
+            <div class="brands-grid">
+                <a href="paletasNuevas.html" class="brand-card">Nuevas</a>
+                <a href="paletasUsadas.html" class="brand-card">Usadas</a>
+                <a href="paletasEncargo.html" class="brand-card">Encargo</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -89,6 +108,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Muestra todas las paletas, puedes agregar filtros -->
+    <div class="filtros">
+        <button onclick="filtrarPorEstado('todos')">Todas</button>
+        <button onclick="filtrarPorEstado('nueva')">Nuevas</button>
+        <button onclick="filtrarPorEstado('usada')">Usadas</button>
+        <button onclick="filtrarPorEstado('encargo')">Encargo</button>
+    </div>
     
 </body>
 </html>

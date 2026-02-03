@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda PadelBox</title>
-    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/paletasEncargo.css">
 </head>
 <body>
     <!-- Header -->
@@ -27,65 +27,35 @@
                         <a href="index.html" class="nav-link">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a href="HTML/paletas.html" class="nav-link">PALETAS</a>
+                        <a href="paletas.html" class="nav-link">PALETAS</a>
                         <div class="dropdown-menu">
-                            <a href="HTML/paletasNuevas.html" class="dropdown-item">Nuevas</a>
-                            <a href="HTML/paletasUsadas.html" class="dropdown-item">Usadas</a>
-                            <a href="HTML/paletasEncargo.html" class="dropdown-item">Encargo</a>
+                            <a href="paletasNuevas.html" class="dropdown-item">Nuevas</a>
+                            <a href="paletasUsadas.html" class="dropdown-item">Usadas</a>
+                            <a href="paletasEncargo.html" class="dropdown-item">Encargo</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="HTML/grips.html" class="nav-link">GRIPS</a>
+                        <a href="grips.html" class="nav-link">GRIPS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="HTML/tubospelotas.html" class="nav-link">TUBO DE PELOTAS</a>
+                        <a href="tubospelotas.html" class="nav-link">TUBO DE PELOTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="HTML/calzado.html" class="nav-link">CALZADO</a>
+                        <a href="calzado.html" class="nav-link">CALZADO</a>
                     </li>
                     <li class="nav-item">
-                        <a href="HTML/accesorios.html" class="nav-link">ACCESORIOS</a>
+                        <a href="accesorios.html" class="nav-link">ACCESORIOS</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Todo lo que necesitas para jugar al pádel</h1>
-            <p>Encuentra las mejores paletas, indumentaria y accesorios de las principales marcas del mercado</p>
-            <a href="#" class="btn">Ver productos destacados</a>
-        </div>
-    </section>
 
-    <!-- Sección de Marcas -->
-    <section class="brands">
-        <div class="container">
-            <h2 class="section-title">Nuestras Marcas</h2>
-            <div class="brands-grid">
-                <div class="brand-card">
-                    <div class="brand-logo">Nox</div>
-                </div>
-                <div class="brand-card">
-                    <div class="brand-logo">Varlion</div>
-                </div>
-                <div class="brand-card">
-                    <div class="brand-logo">Head</div>
-                </div>
-                <div class="brand-card">
-                    <div class="brand-logo">Oxdog</div>
-                </div>
-                <div class="brand-card">
-                    <div class="brand-logo">Siux</div>
-                </div>
-                <div class="brand-card">
-                    <div class="brand-logo">Hirostar</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- AGREGAR EL CODIGO DEPENDENDIENDO DE LA PAGINA QUE ESTEMOS TRABAJANDO -->
+
+    <h2>PALETAS POR ENCARGO</h2>
+
 
     <!-- Footer -->
     <footer>
@@ -120,5 +90,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Similar al anterior, pero filtra por estado "usada" -->
+    <script>
+        async function cargarPaletasEncargo() {
+            const response = await fetch('/paletas.json');
+            const paletas = await response.json();
+            
+            // FILTRAR solo paletas con estado "usada"
+            const paletasEncargo = paletas.filter(p => p.estado === "encargo" && p.disponible !== false);
+            
+            mostrarPaletas(paletasEncargo, 'paletas-encargo-container');
+        }
+    </script>
+
 </body>
 </html>
